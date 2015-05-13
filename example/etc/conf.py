@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-__author__ = 'roland'
 
 from saml2 import BINDING_PAOS
 from saml2 import BINDING_HTTP_ARTIFACT
@@ -17,6 +16,8 @@ PORT = 8087
 # Base URL for the service
 BASE = "http://localhost:{port}".format(port=PORT)
 
+# Base directory for needed files
+
 CONFIG = {
     "entityid": "%s/sp.xml" % BASE,
     "name": "SAML2 test tool",
@@ -24,6 +25,7 @@ CONFIG = {
     "service": {
         "sp": {
             "allow_unsolicited": True,
+            "authn_requests_signed": "true",
             "endpoints": {
                 "assertion_consumer_service": [
                     ("%s/acs/post" % BASE, BINDING_HTTP_POST),
@@ -35,11 +37,11 @@ CONFIG = {
             }
         }
     },
-    "key_file": "./keys/sp.key",
-    "cert_file": "./keys/sp.crt",
+    "key_file": "./keys/mykey.pem",
+    "cert_file": "./keys/mycert.pem",
     "xmlsec_binary": XMLSEC_BINARY,
     "accepted_time_diff": 60,
-    "metadata": {"local": ["./metadata/idp.xml"]},
+    "metadata": {"local": ["./idp.xml"]},
     "secret": "0123456789",
     "only_use_keys_in_metadata": False,
     "logger": {
@@ -53,7 +55,7 @@ CONFIG = {
 }
 
 # The base URL for the IdP
-IDPBASE = "https://localhost:8088"
+IDPBASE = "http://my.idp.com:8089"
 MYSELF = "http://localhost:{port}/acs/post".format(port=PORT)
 
 # This part describes when the 'user'/browser should do things.
