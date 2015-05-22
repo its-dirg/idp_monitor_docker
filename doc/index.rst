@@ -9,12 +9,24 @@ Welcome to idp monitor docker's documentation!
 Contents:
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
+
+   install
+
+.. toctree::
+    :maxdepth: 1
+
+    configuration
 
 
 
 Indices and tables
 ==================
 
-* :ref:`install`
-* :ref:`configuration`
+* :ref:`search`
+
+.. raw:: html
+
+    <a href="https://github.com/its-dirg/idp_monitor_docker" class="github" target="_blank">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="_static/ViewmeonGitHub.png" alt="Fork me on GitHub"  class="github"/>
+    </a>
